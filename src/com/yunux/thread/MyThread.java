@@ -17,6 +17,5 @@ public class MyThread extends Thread{
             e.printStackTrace();
         }
     }
-
-
 }
+
