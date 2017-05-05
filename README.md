@@ -30,3 +30,40 @@
 #### 守护线程
 * setDaemon(true)
 
+### 对象以及变量的并发访问
+#### 线程安全同步
+* 只有共享资源的读写才需要做同步化处理(synchronized)
+
+#### 锁重入
+* 在synchronized方法/块里面是可以调用其它synchronized方法的
+* 可重入锁支持在父子类继承环境中,但是同步不具有继承性
+* 运行的线程出现异常,会自动释放锁
+
+* synchronized 方法 与 synchronized 语句块
+    + 方法有弊端会占用整个同步过程
+
+* synchronized同步块还支持非this对象,(这样可以避免一个类的所有同步方法都竞争同一个锁,提高效率)
+
+* 静态的同步方法/静态同步代码块  持有的是java文件字节码锁
+    + synchronized(Clazz.class) = synchronized static void function
+    
+#### 死锁
+* jps查看运行的线程   jstack -l 线程id 查看死锁
+    + 小科普
+        - public(类,本包,子类,外部包)>protected(类,本包,子类)>default(类,本包)>private(类)
+        - 内部类的好处  https://my.oschina.net/u/1169535/blog/403589
+
+#### volatitle关键字
+* 保证了实例变量在多个线程之间的可见性
+    + 保证线程每次取值都强制从主内存中获取,而不是在线程的私有堆栈里面取值
+* 不具有原子性
+    + i++
+        - 从内存中取出i的值
+        - 计算i+1的值
+        - 将计算的值赋给i
+#### 原子类实现i++   
+
+    
+  
+
+
