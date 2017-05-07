@@ -61,7 +61,42 @@
         - 从内存中取出i的值
         - 计算i+1的值
         - 将计算的值赋给i
-#### 原子类实现i++   
+#### 原子类实现i++  
+ 
+ 
+#### 线程间的通信
+* wait/notify   用在同步代码中
+    + notify执行并不会马上释放锁,而是执行完同步代码的内容才释放,唤醒wait的线程
+    + wait 执行就释放,需要等待notify调用完成之后在继续执行 
+    + 通知过早也会导致wait无法被通知(所以一般先wait然后notify) 
+    + notifyAll 唤醒所有在wait的线程,他们得到了cpu就能够运行
+    
+#### 管道进行通信 ---- 字节流
+* PipedInputStream  PipedReader
+* PipedOutputStream   PipedWriter
+* 连接通道   pipedInputStream.connect(pipedOutputStream)
+
+#### join
+* join 的内部是使用wait实现的
+    + 所以join与sleep的区别就明显了
+    + join在同步上是释放锁的,sleep是不会释放锁的
+    
+#### ThreadLocal 
+* 保证各个线程变量之间的隔离性
+* ThreadLocal初始值为null 可以重写initialValue获取初始值
+
+#### Lock的使用
+##### ReentrantLock
+* lock.lock() 加锁
+* lock.unlock() 释放锁
+##### Condition
+* condition.await()   相当于Object.wait()  
+* condition.signal()/signalAll()  相当于notify/notifyAll
+
+
+##### ReentrantReadWriteLock
+
+
 
     
   
