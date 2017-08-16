@@ -89,12 +89,18 @@
 ##### ReentrantLock
 * lock.lock() 加锁
 * lock.unlock() 释放锁
+* lock.getHoldCount()   获取持有当前lock的个数  lock.lock() +1 lock.unlock() -1
+* getQueueLength()      获取等待此锁的线程个数
+* getWaitQueueLength()  
+
 ##### Condition
 * condition.await()   相当于Object.wait()  
 * condition.signal()/signalAll()  相当于notify/notifyAll
 
 
+
 ##### ReentrantReadWriteLock
+
 
 
 
