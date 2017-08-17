@@ -9,6 +9,7 @@ out
 gen### Java template
 # Compiled class file
 *.class
+*.txt
 
 # Log file
 *.log
